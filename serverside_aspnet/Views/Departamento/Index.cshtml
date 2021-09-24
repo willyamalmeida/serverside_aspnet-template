@@ -1,0 +1,25 @@
+﻿@using System
+
+@{
+    ViewData["Title"] = "Departamento";
+
+    var idComponente = Guid.NewGuid().ToString("N");
+
+    var modelParaOClientSide = new { };
+}
+
+<div id="@(idComponente)" class="painel views-departamento-index">
+
+</div>
+
+@section Scripts{
+    <script>
+        $(function() {
+            treinamento.carregueJavascript("/js/treinamento.views.departamento.index.js", {
+                callback: function() {
+                    new treinamento.views.departamento.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(@modelParaOClientSide)));
+                }
+            })
+        })
+    </script>
+}
